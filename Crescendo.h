@@ -1,15 +1,16 @@
+#pragma once
 #ifndef CRESCENDO_H
 #define CRESCENDO_H
-#include "Computer.h"
 #include "Player.h"
-#include <iostream>
 
-class Crescendo: public Computer
+class Crescendo : public Player
 {
-    public:
+private:
+    int count;
+    char moves[4] = {'P', 'S', 'R'};
+public:
     Crescendo();
-    char makeMove();
-    int round=0;
+    void makeMove();
+    void reset();
 };
-
-#endif
+#endif 

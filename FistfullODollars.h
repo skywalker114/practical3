@@ -1,15 +1,18 @@
+#pragma once
 #ifndef FISTFULLODOLLARS_H
 #define FISTFULLODOLLARS_H
-#include "Computer.h"
 #include "Player.h"
-#include <iostream>
 
-class FistfullODollars: public Computer
+class FistfullODollars : public Player
 {
-    public:
+private:
+    int count;
+    char moves[4] = {'R', 'P', 'P'};
+    //0,1,2
+    //
+public:
     FistfullODollars();
-    char makeMove();
-
+    void makeMove();
+    void reset();
 };
-
 #endif

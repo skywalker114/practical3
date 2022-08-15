@@ -1,26 +1,18 @@
-#include <iostream>
-#include "Player.h"
-#include "Computer.h"
 #include "Crescendo.h"
+#include "Player.h"
 
 Crescendo::Crescendo()
 {
-   
+    reset();
 }
 
-char Crescendo::makeMove()
+void Crescendo::makeMove()
 {
-   if(round%5==1)
-   {return 'P';}
-   else if(round%5==2)
-   {return 'S';}
-   else if(round%5==3)
-   return 'R';
-   else if(round%5==4)
-   return 'P';
-   else
-   return 'S';
+    changeChoice(moves[count % 3]);
+    count++;
+}
 
-   
-    
+void Crescendo::reset()
+{
+    count = 0;
 }

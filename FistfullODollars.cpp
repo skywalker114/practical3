@@ -1,14 +1,18 @@
-#include <iostream>
-#include "Player.h"
-#include "Computer.h"
 #include "FistfullODollars.h"
+#include "Player.h"
 
 FistfullODollars::FistfullODollars()
 {
-   
+    reset();
 }
 
-char FistfullODollars::makeMove()
+void FistfullODollars::makeMove()
 {
-    return 'R';
+    changeChoice(moves[count % 3]);
+    count++;
+}
+
+void FistfullODollars::reset()
+{
+    count = 0;
 }

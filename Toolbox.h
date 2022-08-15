@@ -1,15 +1,11 @@
+#pragma once
 #ifndef TOOLBOX_H
 #define TOOLBOX_H
-#include "Computer.h"
 #include "Player.h"
-#include <iostream>
 
-class Toolbox: public Computer
+class Toolbox : public Player
 {
-    public:
-    Toolbox();
-    char makeMove();
-
+public:
+    void makeMove();
 };
-
 #endif

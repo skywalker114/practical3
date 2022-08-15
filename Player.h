@@ -3,8 +3,12 @@
 
 class Player
 {
-    public:
-    virtual char makeMove(){return 'R';};
+private:
+    char choice;
+public:
+    virtual void reset();
+    virtual void makeMove() = 0;
+    char getMove() const;
+    void changeChoice(char move);
 };
-
 #endif

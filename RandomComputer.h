@@ -1,15 +1,13 @@
+#pragma once
 #ifndef RANDOMCOMPUTER_H
 #define RANDOMCOMPUTER_H
-#include "Computer.h"
-#include "Player.h"
-#include <iostream>
 
-class RandomComputer: public Computer
+class RandomComputer : public Player
 {
-    public:
+private:
+    char choices[4] = {'R','P','S'};
+public:
     RandomComputer();
-    char makeMove();
-
+    void makeMove();
 };
-
 #endif

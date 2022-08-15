@@ -1,15 +1,11 @@
+#pragma once
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
-#include "Computer.h"
 #include "Player.h"
-#include <iostream>
 
-class Bureaucrat: public Computer
+class Bureaucrat : public Player
 {
-    public:
-    Bureaucrat();
-    char makeMove();
-    
+public:
+    void makeMove();
 };
-
 #endif

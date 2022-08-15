@@ -1,14 +1,7 @@
-#include <iostream>
-#include "Player.h"
-#include "Computer.h"
 #include "Toolbox.h"
+#include "Player.h"
 
-Toolbox::Toolbox()
+void Toolbox::makeMove()
 {
-   
-}
-
-char Toolbox::makeMove()
-{
-    return 'S';
+    changeChoice('S');
 }

@@ -1,15 +1,7 @@
-#include <iostream>
-#include "Player.h"
-#include "Computer.h"
 #include "Avalanche.h"
+#include "Player.h"
 
-Avalanche::Avalanche()
+void Avalanche::makeMove()
 {
-   
-}
-
-char Avalanche::makeMove()
-{
-    round++;
-    return 'R';
+    changeChoice('R');
 }

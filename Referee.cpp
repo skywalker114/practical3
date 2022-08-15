@@ -1,58 +1,20 @@
-#include <iostream>
-#include <string>
-#include "Computer.h"
-#include "Human.h"
 #include "Referee.h"
-#include "Player.h"
+#include "RandomComputer.h"
+#include "Avalanche.h"
+#include "Bureaucrat.h"
+#include "Toolbox.h"
+#include "Crescendo.h"
+#include "PaperDoll.h"
+#include "FistfullODollars.h"
+#include "Human.h"
 
-Referee::Referee()
+int Referee::refGame(Player * player1, Player * player2)
 {
-
-}
-
-
-char Referee::refGame(Player player1,Player player2)
-{
-    char winornot;
-    char player1move=player1.makeMove();
-    char player2move=player2.makeMove();
-
-    if (player1move=='R' && player2move=='P')
-    {
-        winornot='L';
-    }
-    else if(player1move=='R' && player2move=='S')
-    {
-        winornot='W';
-    }
-    else if(player1move=='R' && player2move=='R')
-    {
-        winornot='T';
-    }
-    else if(player1move=='P' && player2move=='S')
-    {
-        winornot='L';
-    }
-    else if(player1move=='P' && player2move=='R')
-    {
-        winornot='W';
-    }
-    else if(player1move=='P' && player2move=='P')
-    {
-        winornot='T';
-    }
-    else if(player1move=='S' && player2move=='S')
-    {
-        winornot='T';
-    }
-    else if(player1move=='S' && player2move=='P')
-    {
-        winornot='W';
-    }
-    else 
-    {
-        winornot='L';
-    }
-    
-    return winornot;
+    player1->makeMove();
+    player2->makeMove();
+    char move1 = player1->getMove(), move2 = player2->getMove();
+    if (move1 == move2) return 2;
+    if (((move1 == 'R') && (move2 == 'S')) || ((move1 == 'P') && (move2 == 'R')) || ((move1 == 'S') && (move2 == 'P'))) return 0;
+    if (((move1 == 'R') && (move2 == 'P')) || ((move1 == 'P') && (move2 == 'S')) || ((move1 == 'S') && (move2 == 'R'))) return 1;
+    return -1;
 }

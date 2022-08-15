@@ -1,14 +1,18 @@
-#include <iostream>
-#include "Player.h"
-#include "Computer.h"
 #include "PaperDoll.h"
+#include "Player.h"
 
 PaperDoll::PaperDoll()
 {
-   
+    reset();
 }
 
-char PaperDoll::makeMove()
+void PaperDoll::makeMove()
 {
-    return 'R';
+    changeChoice(moves[count % 3]);
+    count++;
+}
+
+void PaperDoll::reset()
+{
+    count = 0;
 }

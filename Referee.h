@@ -1,19 +1,21 @@
+#pragma once
 #ifndef REFEREE_H
 #define REFEREE_H
-
-#include <iostream>
-#include <string>
-#include "Computer.h"
-#include "Human.h"
 #include "Player.h"
+#include "Avalanche.h"
+#include "Bureaucrat.h"
+#include "Crescendo.h"
+#include "FistfullODollars.h"
+#include "PaperDoll.h"
+#include "RandomComputer.h"
+#include "Toolbox.h"
+#include "Human.h"
 
 class Referee
 {
-    public:
-
-    Referee();
-    char refGame(Player player1,Player player2);
-
+private:
+public:
+    Referee() {};
+    int refGame(Player * player1, Player * player2);
 };
-
-#endif
+#endif 

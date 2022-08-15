@@ -1,17 +1,16 @@
 #ifndef TOURNAMENT_H
 #define TOURNAMENT_H
-#include <iostream>
-#include "Referee.h"
-#include "Player.h"
 #include <array>
+#include "Player.h"
 
 class Tournament
 {
-   public:
-   Tournament();
-   Player* run(std::array< Player* ,8 >competitors);
-   char match(Player pl1,Player pl2);
-   Player competitors[8];
+private:
+    void resetcount();
+    std::array<int, 2> wins;
+public:
+    Tournament();
+    Player * run(std::array<Player *, 8>  competitors);
 };
 
 #endif

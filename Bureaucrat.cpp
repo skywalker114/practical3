@@ -1,14 +1,7 @@
-#include <iostream>
-#include "Player.h"
-#include "Computer.h"
 #include "Bureaucrat.h"
+#include "Player.h"
 
-Bureaucrat::Bureaucrat()
+void Bureaucrat::makeMove()
 {
-   
-}
-
-char Bureaucrat::makeMove()
-{
-    return 'P';
+    changeChoice('P');
 }

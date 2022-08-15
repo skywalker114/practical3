@@ -1,71 +1,94 @@
-#include <iostream>
+#include "Tournament.h"
 #include "Player.h"
 #include "Referee.h"
-#include "Tournament.h"
+#include <array>
+#include <iostream>
 
 Tournament::Tournament()
 {
-   
-    
+    resetcount();
 }
 
-char Tournament::match(Player pl1, Player pl2)
+Player * Tournament::run(std::array<Player *, 8>  competitors)
 {
-    int pl1wins=0;
-    int pl2wins=0;
-    Referee refofgame;
-
-    for(int i=0;i<5;i++)
+    Referee judge;
+    const int games = 5;
+    int result = 0, sf = 0, f = 0;
+    std::array<int, 4> sfin = {0 , 0, 0, 0};
+    std::array<int,2> fin = {0, 0};
+    for (int i = 0; i < (int)sfin.max_size(); i++) //first round
     {
-        char result=refofgame.refGame(pl1,pl2);
-        if(result=='W')
+        for (int k = 0; k < (int)competitors.max_size(); k++)
         {
-            pl1wins++;
+            competitors.at(k)->reset();
         }
-        if(result=='L')
+        resetcount();
+        result = 0;
+        for (int j = 0; j < games; j++)
         {
-            pl2wins++;
+            result = judge.refGame(competitors.at(i * 2), competitors.at(i * 2 + 1));
+            if (result != 2)
+            {
+                wins.at(result)++;
+            }
         }
+        if (wins.at(1) > wins.at(0))
+        {
+            sfin.at(sf) = i * 2 + 1;
+        }
+        else
+        {
+            sfin.at(sf) = i * 2;
+        }
+        sf++;
     }
 
-    if(pl1wins<pl2wins)
+    for (int i = 0; i < (int)fin.max_size(); i++)//semi-finals
     {
-        return 'L';
+        for (int k = 0; k < (int)competitors.max_size(); k++)
+        {
+            competitors.at(k)->reset();
+        }
+        resetcount();
+        result = 0;
+        for (int j = 0; j < games; j++)
+        {
+            result = judge.refGame(competitors.at(sfin.at(i * 2)), competitors.at(sfin.at(i * 2 + 1)));
+            if (result != 2)
+            {
+                wins.at(result)++;
+            }
+        }
+        if (wins.at(1) > wins.at(0))
+        {
+            fin.at(f) = sfin.at(i * 2 + 1);
+        }
+        else
+        {
+            fin.at(f) = sfin.at(i * 2);
+        }
+        f++;
     }
-    else 
-    {return 'W';}
-    
+
+    for (int k = 0; k < (int)competitors.max_size(); k++)
+    {
+        competitors.at(k)->reset();
+    }
+    resetcount();
+    result = 0;
+    for (int j = 0; j < games; j++)
+    {
+        result = judge.refGame(competitors.at(fin.at(0)), competitors.at(fin.at(1)));
+        if (result != 2)
+        {
+            wins.at(result)++;
+        }
+    }
+    return competitors.at(fin.at((wins.at(1) > wins.at(0))));;
 }
 
-
-Player* Tournament::run(std::array< Player* ,8 >competitors)
+void Tournament::resetcount()
 {
-    int num_players = 8;
-    int top_4[4];
-    int top_2[2];
-    Referee Ref;
-    
-    for(int i=0;i<num_players;i+=2)
-    {
-        char result=match(*competitors[i],*competitors[i+1]);
-        if(result=='W')
-        top_4[i/2] = i;
-        else
-        top_4[i/2] = i+1;  
-    }
-    
-    for(int i=0;i<num_players/2;i+=2)
-    {
-        char result=match(*competitors[top_4[i]],*competitors[top_4[i+1]]);
-        if(result=='W')
-        top_2[i/2] = top_4[i];
-        else
-        top_2[i/2] = top_4[i+1];  
-    }
-    
-    char result=match(*competitors[top_2[0]],*competitors[top_2[1]]);
-        if(result=='W')
-        return competitors[top_2[0]];
-        else
-        return competitors[top_2[1]];
+    wins.at(0) = 0;
+    wins.at(1) = 0;
 }
