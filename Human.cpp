@@ -1,22 +1,13 @@
-#include <iostream>
 #include <string>
-#include "Human.h"
+#include <iostream>
 #include "Player.h"
+#include "Human.h"
+using namespace std;
 
-Human::Human()
+Human::Human() : Player("Avalanche") {}
 {
-
-}
-
-char Human::makeMove()
-{
-   char move;
-   std::cout<<"Enter move: ";
-   std::cin>>move;
-   while(move!='R' && move!='S' &&  move!='P')
-   {
-       std::cout<<"Enter move: ";
-       std::cin>>move;
-   }
-   return move;
+    string userHand
+    cout<<" Enter Your Play: ";
+    cin >> userHand;
+    return userHand;
 }

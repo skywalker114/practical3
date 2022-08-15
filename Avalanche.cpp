@@ -1,15 +1,13 @@
+#include <string>
 #include <iostream>
 #include "Player.h"
-#include "Computer.h"
 #include "Avalanche.h"
+using namespace std;
 
-Avalanche::Avalanche()
+Avalanche::Avalanche() : Player("Avalanche") {}
+Avalanche::~Avalanche() {}
+string Avalanche::performMove()
 {
-   
-}
-
-char Avalanche::makeMove()
-{
-    round++;
-    return 'R';
+    hand = "Rock"; 
+    return hand;
 }

@@ -1,15 +1,14 @@
-#ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
-#include "Computer.h"
+#ifndef Bureaucrat_H
+#define Bureaucrat_H
 #include "Player.h"
-#include <iostream>
+using namespace std;
 
-class Bureaucrat: public Computer
-{
+class Bureaucrat : public Player {
     public:
-    Bureaucrat();
-    char makeMove();
-    
+        Bureaucrat();
+        string performMove();
+        ~Bureaucrat();
+    private:
+        string hand;
 };
-
 #endif
